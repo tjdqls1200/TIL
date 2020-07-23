@@ -20,4 +20,7 @@
 
 응용(Application), 표현(Presentation), 세션(Session) 계층은 사용자를 위한 상위 계층으로 Data를 생성하는 역할을 하고 물리(Physical), 데이터 링크(Data Link), 네트워크(Network), 전송(Transport) 계층은 컴퓨터를 위한 하위 계층으로 Data 를 처리하고 전송하는 역할을 한다.
 
-![image-20200719171650505](/Users/sungblee/Library/Application Support/typora-user-images/image-20200719171650505.png)
+![image-20200719173320575](/Users/sungblee/Library/Application Support/typora-user-images/image-20200719173320575.png)
+
+
+
