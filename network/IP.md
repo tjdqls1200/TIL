@@ -59,7 +59,7 @@ IP 는  네트워크 환경에서 컴퓨터(노드) 간 통신하기 위해 각 
 
   네트워크 주소 뒤를 / 로 구분하고 subnet-mask의 bit 수를 적어 표시한다. (192 . 168 . 1 . 0 / 26)
 
-![image-20200726223042154](/Users/sungblee/TIL/image-20200726223042154.png)
+![image-20200726223343824](/Users/sungblee/Library/Application Support/typora-user-images/image-20200726223343824.png)
 
 ### Netmask
 
