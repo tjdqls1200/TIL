@@ -1,6 +1,6 @@
 ## Collection Framework (Iterator)
 
-![cllection_framework](/Users/sungblee/TIL/image/cllection_framework.png)
+![collection](/Users/sungblee/TIL/image/collection.png)
 
 - Collection 프레임워크란 데이터를 저장하는 클래스들을 표준화한 설계로 데이터를 저장하는구조에 따라 3가지 인터페이스로 생성된다. (Set, List, Map 은 어떤 데이터들의 집합체)
 - Set 은 순서를 유지하지 않는 데이터의 집합으로 데이터의 중복을 허용하지 않는다.
@@ -16,3 +16,4 @@
   - hasNext() : 읽어올 요소가 남아있는지 확인하는 메소드, 요소가 있으면 true, 없으면 false 리턴
   - next() : 다음 데이터를 반환한다.
   - remove() : next() 로 읽어온 요소를 삭제한다.
+
