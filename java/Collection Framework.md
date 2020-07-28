@@ -1,6 +1,6 @@
 ## Collection Framework (Iterator)
 
-![cllection_framework](/Users/sungblee/TIL/image/cllection_framework.png)
+![cllection_framework](./image/cllection_framework.png)
 
 - Collection 프레임워크란 데이터를 저장하는 클래스들을 표준화한 설계로 데이터를 저장하는구조에 따라 3가지 인터페이스로 생성된다. (Set, List, Map 은 어떤 데이터들의 집합체)
 - Set 은 순서를 유지하지 않는 데이터의 집합으로 데이터의 중복을 허용하지 않는다.
