@@ -1,23 +1,31 @@
-# K번째 수 (Programmers, Level 1)
+# K번째 수 
+
+## Programmers, Level 1
+
+2차 배열 commands 의 각 행의 요소는 start, end, n 로 이루어져있다.
+
+array 배열의 start 부터 end 사이의 오름차순 값 중 n 번째 값을 구해서 리턴 (commands 의 모든 행) 
 
 
 
 ## 1. 풀이 코드
 
+```
 import java.util.Arrays;
-
 class Solution {
     public int[] solution(int[] array, int[][] commands) {
         int[] answer = new int[commands.length];
+        int[] tmp;
 
-        for(int i=0; i<commands.length; i++) {
-            int[] extractOfArray = Arrays.copyOfRange(array, commands[i][0]-1, commands[i][1]);
-            Arrays.sort(extractOfArray);
-            answer[i] = extractOfArray[commands[i][2]-1];
+        for (int i = 0; i < commands.length; i++) {
+            tmp = Arrays.copyOfRange(array, commands[i][0] - 1, commands[i][1]);
+            Arrays.sort(tmp);
+            answer[i] = tmp[commands[i][2] - 1];
         }
         return answer;
     }
 }
+```
 
 
 
