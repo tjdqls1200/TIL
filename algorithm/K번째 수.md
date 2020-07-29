@@ -47,8 +47,6 @@ copyOfRange(array, startIndex, endIndex)
 
 java.util 라이브러리에는 Collections 라는 하위 라이브러리가 존재, 다양한 기능을 제공(정렬, 셔플 등)
 
-
-
 sort(array, startIndex, endIndex)
 
 - 배열의 요소를 오름차순으로 정렬, index 없으면 전체 정렬.
