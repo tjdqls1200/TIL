@@ -60,7 +60,7 @@ Tag -> Box, Item 두 종류로 분류
   - footer
   - section
   - article
-  - dive
+  - div
   - span
   - form
 
@@ -75,3 +75,5 @@ Tag -> Box, Item 두 종류로 분류
   - map
   - canvas
   - table 
+
+command + option + i
