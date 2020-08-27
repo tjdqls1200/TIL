@@ -1,16 +1,16 @@
-FT_PRINTF (EXAM 대비)
+**FT_PRINTF (EXAM 대비)**
 
 
 
-[%] [flag] [width] [precision] [specifier]
+**[%] [flag] [width] [precision] [specifier]**
 
 
 
-1. Option.
+**1. Option.**
 
 
 
-​	1) flag 
+​	**1) flag** 
 
 ​		base : 우측 정렬
 
@@ -26,13 +26,13 @@ FT_PRINTF (EXAM 대비)
 
 ​			// 문자, 문자열에 0 오면 에러처리
 
-​	2) width
+​	**2) width**
 
 ​		* : width 값을 가변 인자로 받음.
 
 ​			// width보다 가변 인자 길이가 길면 width 무시
 
-​	3) precision
+​	**3) precision**
 
 ​		. : 정밀도 옵션
 
@@ -42,7 +42,7 @@ FT_PRINTF (EXAM 대비)
 
 ​		* : precision 값을 가변 인자로 받음.
 
-​	4) specifier
+​	**4) specifier**
 
 ​		c : char형 문자
 
@@ -62,40 +62,36 @@ FT_PRINTF (EXAM 대비)
 
 
 
-1. Flags
+**2. Flags**
 
-
-
-1. 1. [%] 체크.
+**1) [%] 체크**
 
 ​		1) [%]문자를 체크해서 그 전까지 문자열 출력
 
 ​		2) 분자를 하나씩 체크하면서 [%]가 아니면 출력.
 
-1. 1. [flag] 체크.
+**2) [flag] 체크**
 
 ​		1) ‘ - ‘ / ‘0’ 이 있는동안 체크, 둘 다 올 경우 0은 무시.
 
-1. 1. [width] 체크.
+**3) [width] 체크**
 
 ​		1) ‘ * ’ 가 오면 va_arg 호출, args 포인터 이동.
 
 ​		2) ‘0’ ~ ‘9’ 사이 숫자들 계산
 
-1. 1. [precision] 체크.
+**4) [precision] 체크**
 
 ​		1) ‘ . ‘ 가 오면 그다음 ‘0’ ~ ‘9’ 사이 값을 읽거나 ‘ * ‘ 가 오면 va_arg 호출
 
-1. 1. [specifier] 체크
+**5) [specifier] 체크** 
 
 ​		1) c, s, p, d, i ,x , X, u 체크
 
 
 
-1. Print
+**3. Print**
 
+​	1) specifier 체크 후 자료형에 맞게 포인터 생성, 가변 인자 지정
 
-
-​	1. specifier 체크 후 자료형에 맞게 포인터 생성, 가변 인자 지정
-
-​	2. flag 체크 후 가변 인자 값의 길이와 width 길이 비교하면서 한 문자씩 출력
+​	2) flag 체크 후 가변 인자 값의 길이와 width 길이 비교하면서 한 문자씩 출력
