@@ -56,16 +56,34 @@
 
 
 
+TIP)
+
+seolim님
+
+1. Docker이미지로 debian 환경 만들고 접속해보기
+
+2. nginx 설치하고 로컬호스트에서 접속해보기(docker port 설정)
+
+   
+
+3. Nginx에 php실행시켜 띄워보기(php설치 및 nginx conf 설정)
+
+4. mysql실행해보기(db를 하나 만들어보기)
+
+5. phpmyadmin 접속할수 있게 설정해보기(설치 및 conf 설정)
+
+6. wordpress 접속할수 있게 설정해보기(설치 및 conf 설정)
+
+7. wordpress에 db적용시켜보기
+
+8. 지금까지 해온걸 dockerfile로 자동화 시키기
 
 
-1.Docker이미지로 debian 환경 만들고 접속해보기
-2.nginx 설치하고 로컬호스트에서 접속해보기(docker port 설정)
-\3. Nginx에 php실행시켜 띄워보기(php설치 및 nginx conf 설정)
-4.mysql실행해보기(db를 하나 만들어보기)
-5.phpmyadmin 접속할수 있게 설정해보기(설치 및 conf 설정)
-6.wordpress 접속할수 있게 설정해보기(설치 및 conf 설정)
-7.wordpress에 db적용시켜보기
-8.지금까지 해온걸 dockerfile로 자동화 시키기
+
+hjeon님
+
+1. 이미지 빌드할 때랑 컨테이너 실행할 때 태그, 이름 설정 안 하면 <none>으로 실행시킬때마다 생성돼서 컴퓨터 터짐. 
+2. DB, php, nginx 이런 것들 설치하는게 오래 걸리기 때문에 따로 이미지로 만들어서 베이스 이미지로 삼으면 설치 과정이 생략돼서 시간 매우 단축됨.
 
 
 
@@ -91,3 +109,81 @@ docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]
 
 
 운영체제를 통채로 받아오는 것이 아닌 패키지 매니저와 공유 자원들을 받아 오는 것.
+
+
+
+apt update : 현재 컨테이너 안에 있는 패키지 List를 update (apt : Advanced Packaging Tool)
+
+(dpkg -l : 패키지 List 확인)
+
+apt install : 패키지가 이미 있을 때
+
+apt-get install : 패키지가 없을 때
+
+service [패키지명] [동작] : 패키지 실행 명령
+
+
+
+
+
+nginx 서버를 다운받은 후 php 7.2-fpm 을 연동하기 위해 환경변수를 설정해줘야 함 
+
+​	1) nginx 와 php를 연동하기 위한 파일 수정
+
+​		/etc/nginx/sites-available/default
+
+
+
+​		- root 위치 설정 (index root directory)
+
+​		- index에 index.php 추가(명시된 index 파일들 자동적으로 먼저 실행해줌)
+
+​		- 
+
+​	2) php 환경설정 파일 수정 
+
+​		/etc/php/7.2/fpm/php.ini
+
+​		/etcphp/7.2/cli/php.ini
+
+
+
+​		1) short open tag off -> on
+
+​		2) cgi.fix_pathinfo 0 -> 1 
+
+
+
+service nginx reload. (default 파일 수정 후 재실행을 해줘야 적용이 됨)
+
+service php7.2-fpm start(-> Sock 파일 생성 됨, Sock 파일이 있어야 php 실행 가능)
+
+
+
+ service nginx restart.
+
+service php7.2-fpm restart
+
+ 
+
+
+
+mysql -u root -p
+
+
+
+
+
+
+
+https://stitchcoding.tistory.com/2
+
+https://subicura.com/2017/02/10/docker-guide-for-beginners-create-image-and-deploy.html
+
+https://www.slideshare.net/pyrasis/docker-fordummies-44424016
+
+https://www.manualfactory.net/10903
+
+https://pyrasis.com/docker.html
+
+https://www.youtube.com/watch?v=FZLpsjNbMg8
