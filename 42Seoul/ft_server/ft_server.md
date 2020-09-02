@@ -1,0 +1,49 @@
+# ft_server 
+
+
+
+### 1. Introduction
+
+This topic is intended to introduce you to system administration. It will make you aware of the importance of using scripts to automate your tasks. For that, you will discover the "docker" technology and use it to install a complete web server. This server will run multiples services: Wordpress, phpMyAdmin, and a SQL database.
+
+
+
+- 시스템 관리 학습. 
+
+- 작업을 자동화하기 위해 스크립트를 사용하는 것의 중요성 인지
+
+- **docker를 사용하여 완전한 웹 서버**를 설치
+
+- 이. 서버는 **Wordpress, phpMyAdmin 그리고 SQL 데이터베이스 서비스** 실행.
+
+  
+
+### 2. General instructions
+
+You must place all the necessary files for the configuration of your server in a folder called srcs. Your Dockerfile file should be at the root of your repository. It will build your container. You can’t use docker-compose. All the necessary files for your WordPress website should be in the folder srcs.
+
+
+
+- **서버 구성에 필요한 모든 파일을 srcs 폴더**에 저장
+
+- **Dockerfile 파일은 리포지토리의 루트에 있어야하고 이것은 컨테이너를 빌드할 것**이다. (docker-compose 사용 X)
+
+- **WordPress 웹 사이트에 필요한 모든 파일은 srcs 폴더**에 있어야한다
+
+  
+
+### 3. Mandatory part
+
+You must set up a web server with Nginx, in only one docker container. The container OS must be debian buster. Your web server must be able to run several services at the same time. The services will be a WordPress website, phpMyAdmin and MySQL. You will need to make sure your SQL database works with the WordPress and phpMyAdmin.
+
+Your server should be able to use the SSL protocol. You will have to make sure that, depending on the url, your server redirects to the correct website. You will also need to make sure your server is running with an autoindex that must be able to be disabled.
+
+
+
+- **하나의 Docker 컨테이너에서 Nginx로 웹 서버를 설정**해야한다. (**컨테이너 OS는 debian buster**)
+- 웹 서버는 **여러 서비스를 동시에 실행**할 수 있어야한다. 
+- 서비스는 **WordPress 웹 사이트, phpMyAdmin 그리고 MySQL**이고 SQL 데이터베이스가 WordPress 와 phpMyAdmin에서 작동하도록 만들어야한다.
+- **서버는 SSL 프로토콜을 사용**할 수 있어야한다.
+- **URL에 따라 서버가 올바른 웹사이트로 리디렉션되어야 한다.**
+- **서버가 반드시 연결이 되지 않아도 autoindex로 돌아갈 수 있어야 한다?**
+- 언제든 해제할 수 있는 autoindex가 적용 되어야 한다?

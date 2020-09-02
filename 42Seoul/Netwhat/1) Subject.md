@@ -56,27 +56,27 @@ Netwhat is a multiple choice project. This project will evaluate your network kn
 
 -  **TCP** 란 무엇인가?
 
-  - 
+  - IP보다 느리지만 도착한 조각들을 정렬하고 손실된 부분을 다시 요청하여 **데이터를 안전하게 전달**하는 프로토콜로 속도는 느리지만 논리적이면서 높은 신뢰성을 가지는 전송을 보장하기 위해 **3 & 4way handshake** 방법을 사용한다 
 
 - **UDP**란 무엇인가?
 
-  - 
+  - **데이터를 데이터그램(독립적인 관계를 지니는 패킷) 단위로 처리**하는 프로토콜 (각각의 패킷은 다른 경로로 전송)로 TCP 와 달리 연결을 위해 할당되는 **논리적인 경로가 없는 비연결형** 프로토콜이다. 신호 절차를 거치지 않기 때문에 TCP 보다 속도가 빠르고 **네트워크 부하가 적지만 신뢰성을 보장하지는 못 한다.**
 
 - **network layers**란 무엇인가?
 
-  - 
+  - **논리적 주소(IP)** 를 구분하고 연결하여 패킷 데이터를 목적지까지 최적의 경로로 가장 빠르게 전달하는 역할을 하는 계층
 
 - **OSI model**이란 무엇인가?
 
-  - 
+  - 국제 표준화 기구에서는 통신이 일어나는 과정을 **계층별로 세분화**시켜 **응용(Application) -> 표현(Presentation) -> 세션(Session) -> 전송(Transport) -> 네트워크(Network) -> 데이터 링크(Data Link) -> 물리(Physical)** 의 7계층으로 이루어진 모델.
 
 - **DHCP server 와 the DHCP protocol**이란 무엇인가?
 
-  - 
+  - IP 주소를 할당하는 **특정 서버가 보내 주는 IP 주소 그대로 컴퓨터에 자동 할당되는 방식**으로 컴퓨터가 많은 환경에서 간편하고 유용하다.
 
 - **DNS server 와 the DNS protocol**이란 무엇인가?
 
-  - 
+  - **도메인 네임과 해당 IP 주소를 한 쌍으로 저장**하고 있는 **분산형 데이터 베이스** 시스템으로 호스트의 도메인 네임을 **컴퓨터가 인식할 수 있는 네트워크 주소로 변환**해주는 역할을 한다.
 
 - What are **the rules to make 2 devices communicate using IP addresses**
 
