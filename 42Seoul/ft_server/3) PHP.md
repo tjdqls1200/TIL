@@ -10,7 +10,7 @@
 
 #### 2. PHP-FPM (PHP - FastCGI Process Manager)
 
-- PHP-FPM은 PHP를 CGI보다 빠른 방식인 FastCGI 모드로 동작하도록 해줌
+- php-fpm은 php를 CGI보다 빠른 방식인 FastCGI 모드로 동작하도록 해준다.
 - **CGI (Common Gateway Interface)**
   - 웹 서버 상에서 사용자 프로그램을 동작시키기 위한 조합
   - 외부 프로그램이 내용을 전달받아 HTML 파일로 반환하는 단계
@@ -36,3 +36,9 @@
 - 대표적인 서버 사이트 스크립트 언어 : PHP
 - 워드프레스, 미디어위키 등의 많은 애플리케이션이 PHP로 짜여 있음 
 
+
+
+#### 4. PHP-FPM 을 설치하는 이유
+
+- Nginx는 php를 해석할 수 없기 때문에 외부 프로그램의 도움을 받아야 한다.
+- php-fpm 은 Nginx 로 부터 전달 받은 경로의 php 파일을 실행시키고 그 실행 결과를 Nginx 에게 반환하는 독립 실행 프로그램이다.
