@@ -76,4 +76,3 @@ Tag -> Box, Item 두 종류로 분류
   - canvas
   - table 
 
-command + option + i
