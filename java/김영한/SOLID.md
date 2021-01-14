@@ -1,7 +1,48 @@
-**좋은 객체 지향 설계의** **5가지 원칙 (로버트 마틴)**
+### **좋은 객체 지향 설계의** **5가지 원칙 (로버트 마틴)**
 
-- SRP: 단일 책임 원칙(single responsibility principle)
-- OCP: 개방-폐쇄 원칙 (Open/closed principle)
-- LSP: 리스코프 치환 원칙 (Liskov substitution principle)
-- ISP: 인터페이스 분리 원칙 (Interface segregation principle)
-- DIP: 의존관계 역전 원칙 (Dependency inversion principle)
+
+
+#### 1. SRP: 단일 책임 원칙(single responsibility principle)
+
+- **하나의 클래스는 하나의 책임**만 가진다. (but 하나의 책임은 모호한 기준)
+- 중요한 기준은 **변경!!** -> 변경에 따른 파급 효과가 적으면 SRP를 잘 지킨 것.
+
+
+
+#### 2. OCP: 개방-폐쇄 원칙 (Open/closed principle)
+
+- 소프트웨어 요소는 **확장에는 열려 있으나 변경에는 닫혀 있어야** 한다.
+
+- **다형성을 활용**하여 확장이 가능하다. (그렇다면 기존 코드의 변경은?)
+
+![image-20210114142030952](/Users/sungblee/Downloads/TyporaImage/image-20210114142030952.png)
+
+기존의 주석 처리한 부분을 보면 인터페이스 MemberRepository의 구현 클래스인 MemoryMemberRepository가 바뀔 경우 클라이언트 코드를 직접 수정해줘야 한다. (OCP 위반)
+
+위와 같은 OCP 원칙의 문제점을 해결하기 위해서 스프링이 필요하다.
+
+
+
+#### 3. LSP: 리스코프 치환 원칙 (Liskov substitution principle)
+
+- 다형성에서 하위 클래스는 인터페이스 규약을 지켜야 한다. (프로그램의 정확성)
+
+- 인터페이스의 엑셀 기능을 후진을 하도록 구현 해도 컴파일 자체에는 문제가 없다. 하지만 인터페이스의 규약이 깨졌으므로 LSP 원칙을 위반했다고 볼 수 있다.
+
+  
+
+#### 4. ISP: 인터페이스 분리 원칙 (Interface segregation principle)
+
+- 특정 클라이언트를 위한 여러 인터페이스가 범용 인터페이스 하나보다 낫다.
+- 인터페이스가 명확해지고, 대체 가능성이 높아진다.
+
+
+
+#### 5. DIP: 의존관계 역전 원칙 (Dependency inversion principle)
+
+- 구현 클래스에 의존하지 말고, 인터페이스(추상)에 의존해야 한다.
+- 역할이 아닌 구현에 의존하게 되면 변경이 굉장히 어려워 진다.
+
+
+
+#### 다형성만으로는 OCP, DIP를 지킬 수 없다!! -> 스프링의 필요성

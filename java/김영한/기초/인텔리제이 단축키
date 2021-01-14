@@ -1,0 +1,7 @@
+cmd + opt + v : 리턴 변수 생성
+
+cntl + t : Refactor
+
+cmd + opt + m : 메소드 추출
+
+cmd + shift + t : 테스트 케이스 생성
