@@ -1,7 +1,3 @@
-
-
-
-
 ### int 와 Integer 의 차이.
 
 int (Primitive 자료형)
