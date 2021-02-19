@@ -135,22 +135,29 @@ request.getParameter("cnt");
 
 
 
-흐름
+**동적 페이지 생성 흐름**
 
 1. 웹 서버는 **클라이언트에 요청**을 받으면 확인 후 웹 서버에 해당 데이터가 없으면 **WAS(Web Application Server)에 HTTPRequest를 요청**  
+2. WAS는 웹 서버의 요청을 받고 **Servlet Container**에서 **HttpServletRequest, HttpServletResponse 객체를 생성**
+3. 클라이언트에서 요청한 URL 데이터로 해당 **Servlet을 조회(web.xml 또는 Annotation 매핑 정보 조회)**
+   - Servlet은 클라이언트로부터 최초 요청시에 **단 한번만 init() 초기화** (각 Servlet 객체는 Servlet Container에 하나만 존재)
+   - 한번 호출된 Servlet은 Servlet Container에 남아 있어 **재요청시 init() 없이 바로 service() 메소드를 실행**하여 요청을 처리.
+4. Servlet을 찾아 **Thread를 생성하고 service() 메소드를 실행**한다.
+5. GET, POST 방식에 따라 **doGet() 또는 doPost() 메소드를 실행**하여 **동적 페이지를 생성**하고 HttpServletResponse에 전달
+6. 클라이언트에 동적 페이지 전달,  **Thread 종료, HttpServletRequest, HttpServletResponse 객체 소멸**
 
-2. **WAS**는 웹 서버의 요청을 받고 **Servlet Container**에서 **HttpServletRequest, HttpServletResponse 객체를 생성**
 
-3. 클라이언트에서 요청한 URL 데이터로 해당 Servlet을 찾음(web.xml 또는 Annotation)
-
-4. Servlet을 찾아 service() -> doGet() or doPost() -> 동적 페이지 생성 -> HttpServletResponse로 전달
-
-   
 
 https://dololak.tistory.com/47
 
-https://sjh836.tistory.com/126
 
-https://myblog.opendocs.co.kr/archives/425
 
-https://webfirewood.tistory.com/38
+**CGI -> Servlet -> JSP**
+
+1. **기존의 웹 서버는 저장해둔 정적인 페이지를 전달하여 보여주는 것만 가능**했기 때문에 클라이언트의 요청에 따라 동적으로 페이지를 생성하고 이를 클라이언트에게 보내주는 것이 불가능. 
+2. 따라서 **서버에서 외부 프로그램을 사용하여 동적인 페이지를 생성**하고 이를 클라이언트에게 전달할 수 있는 **CGI(Common GateWay Interface)**가 등장
+3. 서버에서 Process 단위로 실행이 되는 CGI는 클라이언트의 요청이 많을때 서버에 부하가 크게 가게 되었고 Thread 단위로 실행되는 Servlet을 사용하여 성능을 개선 (후에 JSP 등장)
+
+
+
+https://dololak.tistory.com/475
