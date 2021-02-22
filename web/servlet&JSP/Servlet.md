@@ -1,8 +1,8 @@
-서블릿 코드는 WAS에 의해 실행이 되고 결과를 반환한다.
+**Servlet**이란 클라이언트의 요청에 따라 **동적 페이지를 만들기 위한 자바 코드로 된 파일**로 WAS에 의해 Servlet Container에서 실행이 된다.
 
 
 
-public class [       ] extends HttpServlet (HttpServlet 추상클래스의 service라는 함수를 구현)
+public class [       ] extends **HttpServlet** (HttpServlet 추상클래스의 **service라는 함수를 구현**)
 
 ```java
 import javax.servlet.*;
@@ -40,13 +40,13 @@ javac -cp /usr/local/Cellar/tomcat/9.0.43/libexec/lib/servlet-api.jar Example.ja
 
 **Servlet 클래스 파일은 어디에 있어야 하는가?**
 
-/usr/local/Cellar/tomcat/9.0.43/libexec/webapps/ROOT/WEB-INF/classes/
+/usr/local/Cellar/tomcat/9.0.43/libexec/webapps/ROOT/**WEB-INF/classes/**
 
 톰캣 ROOT 내 WEB-INF에 있는 자원은 클라이언트에 의해 요청될 수 있는 디렉토리가 아니다. (서버쪽에서만 접근 가능)
 
-servlet mapping을 통해 매핑을 하고 클라이언트는 매핑된 이름으로 url 요청을 하면 톰캣이 실행해줌
+web.xml에서 Servlet mapping을 하고 클라이언트는 매핑된 이름으로 url 요청을 하면 톰캣이 실행해줌
 
-웹서버는 url 요청을 받고 파일이 없으면 WAS에게 넘김 -> WAS에서 매핑 정보를 조회하여 넘겨줌
+웹서버는 url 요청을 받고 파일이 없으면 WAS에게 넘김 -> WAS에서 매핑 정보를 조회하여 Servlet 실행
 
 매핑 정보를 web.xml파일에서 설정해도 되지만 어노테이션을 이용하는 것이 더 좋음
 
@@ -161,3 +161,106 @@ https://dololak.tistory.com/47
 
 
 https://dololak.tistory.com/475
+
+
+
+**상태 유지 방법 3가지 (Application, Session, Coockie)**
+
+Application 저장소가 헬스장(공용 공간)이면 Session은 개인 사물함(시간 지나면 비움), Cookie는 개인 가방(분실 위험)
+
+**Application (ServletContext)**
+
+Servlet은 호출 시 Thread를 할당 받아 동작하는데 클라이언트에 동적 페이지를 전달하고 나면 Thread도 종료가 되면서 스택 메모리가 소멸이 된다. 그래서 값을 받아서 저장해둘 필요가 있는 경우 Servlet Contex라는 저장소를 사용한다. Servlet Context는 서블릿들이 자원(데이터)을 공유하는 공간으로 웹 어플리케이션마다 하나씩 존재하며 컨테이너 실행과 종료시에 생성 되었다가 소멸된다.
+
+```java
+ServletContext application = request.getServletContext();
+
+application.setAttribute("value", x);	// ServletContext에 값을 저장
+```
+
+사용범위 : 전역 범위에서 사용
+
+생명주기 : WAS가 시작해서 종료할 때까지
+
+저장위치 : WAS 서버의 메모리
+
+
+
+
+
+**Session**
+
+```java
+HttpSession session = req.getSession();
+session.getAttribute();
+
+session.setAttribute();
+```
+
+
+
+Session이란 현재 접속한 사용자를 의미하며 사용자마다 개별적으로 할당받는 공간
+
+ 각각의 웹 브라우저를 사용하면 서로 다른 사용자로 인식
+
+WAS에서 사용자를 구별하는 방법
+
+사용자 요청 -> 서블릿 실행 -> 처음 요청을 한 경우 사용자는 세션키(SID)가 없는 상태.(서버에 해당 세션을 위한 공간이 없음) -> 요청 종료 시 세션키(SID) 부여(웹 브라우저에서 보관) -> 다음 요청부터는 세션키(SID)로 접근 -> 웹 브라우저 종료 시 세션키도 소멸
+
+세션 공간은 일정 시간이 지나면 소멸되고 setMaxInactivelnterval(int interval) 메서드를 통해 세션 타임아웃을 정수(초)로 설정 가능
+
+WAS에 저장 (사용자마다 세션을 생성해줌)
+
+사용범위 : 세션 범위에서 사용
+
+생명주기 : 세션이 시작해서 종료할 때까지
+
+저장위치 : WAS 서버의 메모리
+
+
+
+
+
+**Cookie** 
+
+Application, Session이 웹 서버 저장소라면 Coockie는 클라이언트 저장소
+
+웹 브라우저는 요청 시에 헤더 정보(TCP/IP, header.. coockie)와 사용자 정보를 전송하고 서버는 다음과 같이 받을 수 있다.
+
+```java
+getHeader();
+getCoockies();
+getParameter();
+```
+
+쿠키는 Key와 Value 형태(String)로 값을 가지며 addCookie()로 쿠키 정보를 사용자에게 보낼 수 있다.
+
+```java
+// 쿠키 읽기
+Cookie[] cookies = req.getCookies();
+
+
+// 쿠키 저장
+Cookie cookie = new Cookie("c", String.valueOf(result));
+res.addCookie(cookie);
+```
+
+쿠키는 기본적으로 웹 브라우저의 메모리에 저장이 되어 웹 브라우저를 닫으면 같이 소멸되지만 setMaxAge 설정을 하면 외부 파일로 저장이 되어 웹 브라우저가 닫혀도 데이터가 유지되게 할 수 있다.
+
+setPath를 설정해서 해당 경로로 들어올 때만 쿠키를 전송하도록 할 수 있다.
+
+데이터가 오래 유지되어야 하는 경우에 주로 사용하고 보안상의 중요한 데이터는 쿠키로 전송 시 위험
+
+사용범위 : 웹 브라우저별 지정한 path 범주 공간
+
+생명주기 : 브라우저에 전달한 시간부터 만료 시간까지
+
+저장위치 : 웹 브라우저의 메모리 또는 파일
+
+
+
+
+
+김영한 강의 보고 다시 정리
+
+https://devuna.tistory.com/23
