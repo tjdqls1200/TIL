@@ -264,3 +264,32 @@ setPath를 설정해서 해당 경로로 들어올 때만 쿠키를 전송하도
 김영한 강의 보고 다시 정리
 
 https://devuna.tistory.com/23
+
+
+
+**서버에서 페이지를 만들어 보여줘야 하는 동적인 페이지가 필요한 경우** (계산기에서 계속 숫자를 더해가면 숫자들이 3 + 5 + 2 ... 이런 식으로 나열이 되어 보여지는데 일반 html 파일로는 이렇게 실시간으로 값을 받아 동적인 페이지를 보여주는 것이 불가능)
+
+서블릿에서 html 코드를 출력해서 할 수는 있지만 html 코드에 out.write("<html>"); 이런식으로 쭉 써야해서 굉장히 비효율적 -> Servlet처럼 자바에서 html 코드를 사용하는 것이 아니라 html에서 자바 코드를 사용하는 방법 -> JSP(Java Server Page)
+
+
+
+JSP란 **HTML내에 자바 코드를 삽입하여 웹 서버에서 동적으로 웹 페이지를 생성**하여 웹 브라우저에 돌려주는 **서버 사이드 스크립트 언어**
+
+
+
+
+
+**GET, POST 요청에 따라 받기**
+
+
+
+if(req.getMethod().equals("GET")) {
+
+} else if (req.getMethod().equals("POST")) {
+
+}
+
+service() 메소드 호출시 GET, POST 방식에 따라 doGet(), doPost()가 호출된다.
+
+그래서 doGet(), doPost()를 각각 @Override해서 정의해도 된다.
+
